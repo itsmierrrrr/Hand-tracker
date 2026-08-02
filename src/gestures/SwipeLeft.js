@@ -31,7 +31,6 @@ export class SwipeLeftDetector {
     if (this._history.length > WINDOW_FRAMES) this._history.shift();
     if (this._history.length < WINDOW_FRAMES) return null;
 
-    const delta = this._history[0] - this._history[WINDOW_FRAMES - 1]; // +ve = moved left (X decreases in normalized)
     // In mirrored space leftward motion = X increases (since mirrored)
     // Raw MediaPipe X: 0=left edge, 1=right edge (camera view, not mirrored)
     // Swipe left (in real world) = wrist X INCREASES in raw coords
