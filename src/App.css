@@ -1,0 +1,192 @@
+/* ═══════════════════════════════════════════════════
+   Hand Controller Pro — App Layout
+   Theme: Matte black · Dark gray · White · Blue accent
+   ═══════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Shell ─────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Main (right of sidebar) ──────────────────────── */
+.app-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Center column ────────────────────────────────── */
+.app-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ── Viewport ─────────────────────────────────────── */
+.viewport-wrapper {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.viewport-video,
+.viewport-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.viewport-canvas {
+  pointer-events: none;
+}
+
+/* ── Loading overlay ──────────────────────────────── */
+.viewport-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(6px);
+  gap: 16px;
+  z-index: 5;
+}
+
+.overlay-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #1e1e1e;
+  border-top-color: #4a90e2;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.overlay-text {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0;
+}
+
+/* ── Gesture badge ────────────────────────────────── */
+.gesture-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(74, 144, 226, 0.15);
+  border: 1px solid rgba(74, 144, 226, 0.35);
+  color: #4a90e2;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(8px);
+  z-index: 4;
+  animation: fadeIn 0.2s ease;
+}
+
+.paused-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(240, 173, 78, 0.15);
+  border: 1px solid rgba(240, 173, 78, 0.35);
+  color: #f0ad4e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  z-index: 4;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Tab content panel ────────────────────────────── */
+.tab-panel {
+  flex-shrink: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #0d0d0d;
+  border-top: 1px solid #1a1a1a;
+}
+
+.tab-panel::-webkit-scrollbar { width: 4px; }
+.tab-panel::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+
+/* ── Gesture cheat sheet ──────────────────────────── */
+.cheat-sheet {
+  padding: 16px 24px;
+}
+
+.cheat-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a90e2;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+
+.cheat-table {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+@media (min-width: 900px) {
+  .cheat-table {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cheat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+}
+
+.cheat-gesture {
+  color: #aaa;
+  font-weight: 500;
+  min-width: 160px;
+}
+
+.cheat-arrow {
+  color: #333;
+}
+
+.cheat-action {
+  color: #4a90e2;
+  font-weight: 600;
+}
